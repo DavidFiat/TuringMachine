@@ -73,16 +73,23 @@ public class Machine {
 		} else {
 			if (numberOfElements % 2 != 0) {
 				BandElement temp = middle.getNextBandElement();
+
 				middle.setNextBandElement(bE);
 				bE.setNextBandElement(temp);
 				bE.setPreviousBandElement(middle);
-				temp.setPreviousBandElement(bE);
+				if (temp != null) {
+					temp.setPreviousBandElement(bE);
+				}
 			} else {
 				BandElement temp1 = middle;
 				BandElement temp2 = middle.getNextBandElement();
-				temp1.setNextBandElement(bE);
+				if (temp1 != null) {
+					temp1.setNextBandElement(bE);
+				}
 				bE.setNextBandElement(temp2);
-				temp2.setPreviousBandElement(bE);
+				if (temp2 != null) {
+					temp2.setPreviousBandElement(bE);
+				}
 				bE.setPreviousBandElement(temp1);
 				middle = bE;
 			}
@@ -101,7 +108,9 @@ public class Machine {
 			BandElement temp = last.getPreviousBandElement();
 			last = bE;
 			last.setPreviousBandElement(temp);
-			temp.setNextBandElement(last);
+			if (temp != null) {
+				temp.setNextBandElement(last);
+			}
 			if (numberOfElements % 2 == 0) {
 				middle = middle.getNextBandElement();
 			}
@@ -152,7 +161,9 @@ public class Machine {
 			} else {
 
 				BandElement current = last.getPreviousBandElement();
-				current.setNextBandElement(null);
+				if (current != null) {
+					current.setNextBandElement(null);
+				}
 				last = current;
 				if (numberOfElements % 2 != 0) {
 					middle = middle.getPreviousBandElement();

@@ -37,56 +37,52 @@ public class Main {
 			int instructions = a.length();
 			for (int i = 0; i < instructions; i++) {
 
-				int option = a.charAt(i);
+				char option = a.charAt(i);
 
 				switch (option) {
 
-				case (0):
+				case (48):
 					i++;
-					if (a.charAt(i) == 0) {
-						bw.write(turin.c0Read());
-						break;
+					if (a.charAt(i) == 48) {
+						bw.write(turin.c0Read() + "\n");
 
-					} else if (a.charAt(i) == 1) {
+					} else if (a.charAt(i) == 49) {
 						i++;
 						turin.c0Add("" + a.charAt(i));
-						break;
-					} else if (a.charAt(i) == 2) {
+
+					} else if (a.charAt(i) == 50) {
 						turin.c0Remove();
-						break;
 
 					}
+					break;
 
-				case (1):
+				case (49):
 					i++;
-					if (a.charAt(i) == 0) {
-						bw.write(turin.c1Read());
-						break;
+					if (a.charAt(i) == 48) {
+						bw.write(turin.c1Read() + "\n");
 
-					} else if (a.charAt(i) == 1) {
+					} else if (a.charAt(i) == 49) {
 						i++;
 						turin.c1Add("" + a.charAt(i));
-						break;
-					} else if (a.charAt(i) == 2) {
+
+					} else if (a.charAt(i) == 50) {
 						turin.c1Remove();
-						break;
 
 					}
-				case (2):
+					break;
+				case (50):
 					i++;
-					if (a.charAt(i) == 0) {
-						bw.write(turin.c2Read());
-						break;
+					if (a.charAt(i) == 48) {
+						bw.write(turin.c2Read() + "\n");
 
-					} else if (a.charAt(i) == 1) {
+					} else if (a.charAt(i) == 49) {
 						i++;
 						turin.c2Add("" + a.charAt(i));
-						break;
-					} else if (a.charAt(i) == 2) {
+					} else if (a.charAt(i) == 50) {
 						turin.c2Remove();
-						break;
 
 					}
+					break;
 				}
 
 			}
