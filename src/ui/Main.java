@@ -32,8 +32,8 @@ public class Main {
 		BufferedWriter bw = new BufferedWriter(new FileWriter("data/Output.txt"));
 		turin = new Machine();
 
-		while (br.readLine() != null) {
-			String a = br.readLine();
+		String a = br.readLine();
+		while (a != null) {
 			int instructions = a.length();
 			for (int i = 0; i < instructions; i++) {
 
@@ -45,6 +45,7 @@ public class Main {
 					i++;
 					if (a.charAt(i) == 48) {
 						bw.write(turin.c0Read() + "\n");
+						System.out.println(turin.c0Read());
 
 					} else if (a.charAt(i) == 49) {
 						i++;
@@ -60,6 +61,7 @@ public class Main {
 					i++;
 					if (a.charAt(i) == 48) {
 						bw.write(turin.c1Read() + "\n");
+						System.out.println(turin.c1Read());
 
 					} else if (a.charAt(i) == 49) {
 						i++;
@@ -74,6 +76,7 @@ public class Main {
 					i++;
 					if (a.charAt(i) == 48) {
 						bw.write(turin.c2Read() + "\n");
+						System.out.println(turin.c2Read());
 
 					} else if (a.charAt(i) == 49) {
 						i++;
@@ -86,7 +89,7 @@ public class Main {
 				}
 
 			}
-
+			a = br.readLine();
 		}
 		br.close();
 		bw.close();

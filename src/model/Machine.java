@@ -72,24 +72,22 @@ public class Machine {
 			last = bE;
 		} else {
 			if (numberOfElements % 2 != 0) {
-				BandElement temp = middle.getNextBandElement();
+				BandElement temp = middle;
 
 				middle.setNextBandElement(bE);
-				bE.setNextBandElement(temp);
+				// bE.setNextBandElement(temp);
 				bE.setPreviousBandElement(middle);
-				if (temp != null) {
-					temp.setPreviousBandElement(bE);
+				if (middle == last) {
+					last = bE;
 				}
 			} else {
 				BandElement temp1 = middle;
 				BandElement temp2 = middle.getNextBandElement();
-				if (temp1 != null) {
-					temp1.setNextBandElement(bE);
-				}
+				temp1.setNextBandElement(bE);
+
 				bE.setNextBandElement(temp2);
-				if (temp2 != null) {
-					temp2.setPreviousBandElement(bE);
-				}
+				temp2.setPreviousBandElement(bE);
+
 				bE.setPreviousBandElement(temp1);
 				middle = bE;
 			}
@@ -105,14 +103,16 @@ public class Machine {
 			last = bE;
 
 		} else {
-			BandElement temp = last.getPreviousBandElement();
+			BandElement temp = last;
 			last = bE;
 			last.setPreviousBandElement(temp);
 			if (temp != null) {
 				temp.setNextBandElement(last);
 			}
 			if (numberOfElements % 2 == 0) {
-				middle = middle.getNextBandElement();
+				if (middle != null) {
+					middle = middle.getNextBandElement();
+				}
 			}
 
 		}
@@ -121,7 +121,7 @@ public class Machine {
 
 	public void c0Remove() {
 		if (first != null) {
-			BandElement current = first.getNextBandElement();
+			BandElement current = first;
 			if (current == null) {
 				first = null;
 				middle = null;
@@ -145,8 +145,12 @@ public class Machine {
 			} else {
 				BandElement p = middle.getPreviousBandElement();
 				BandElement n = middle.getNextBandElement();
-				p.setNextBandElement(n);
-				n.setPreviousBandElement(p);
+				if (p != null) {
+					p.setNextBandElement(n);
+				}
+				if (n != null) {
+					n.setPreviousBandElement(p);
+				}
 				numberOfElements--;
 
 			}
